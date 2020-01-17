@@ -1,0 +1,72 @@
+{
+  "name": "roblox-domino-pizza-api",
+  "tree": {
+    "$className": "DataModel",
+    "HttpService": {
+      "$className": "HttpService",
+      "$properties": {
+        "HttpEnabled": true
+      }
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "Outlines": false,
+        "Ambient": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "GlobalShadows": true,
+        "Technology": "Voxel",
+        "Brightness": 2.0
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "$path": "src/ReplicatedStorage"
+    },
+    "SoundService": {
+      "$className": "SoundService",
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    },
+    "Workspace": {
+      "$path": "src/Workplace",
+      "$className": "Workspace",
+      "$properties": {
+        "FilteringEnabled": true
+      },
+      "Terrain": {
+        "$className": "Terrain"
+      },
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Position": [
+            0.0,
+            -10.0,
+            0.0
+          ],
+          "Color": [
+            0.38823,
+            0.37254,
+            0.38823
+          ],
+          "Size": [
+            512.0,
+            20.0,
+            512.0
+          ],
+          "Locked": true
+        }
+      }
+    },
+    "ServerScriptService":  {
+     "$path": "src/ServerScriptService",
+     "$className": "ServerScriptService"
+    }
+  }
+}
