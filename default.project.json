@@ -33,8 +33,7 @@
       }
     },
     "Workspace": {
-      "$path": "src/Workplace",
-      "$className": "Workspace",
+       "$className": "Workspace",
       "$properties": {
         "FilteringEnabled": true
       },
