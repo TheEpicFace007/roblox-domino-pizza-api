@@ -1,3 +1,4 @@
 *.rbxlx
 *.rbxlx.*
 roblox.toml
+src/ServerScriptService/test.server.lua
