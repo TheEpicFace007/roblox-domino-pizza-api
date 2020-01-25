@@ -515,7 +515,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">test</string>
 				<string name="ScriptGuid">{804BB4BF-0D37-4BD8-A902-BF4B2D034C8E}</string>
-				<ProtectedString name="Source"><![CDATA[module = require(game.ReplicatedStorage.Domino)
+				<ProtectedString name="Source"><![CDATA[module = require(game.ReplicatedStorage.DominoPizzaAPI.StoreLocator     )
 
 -- Testing script
 do -- printing the content of it
@@ -553,32 +553,65 @@ end
 			<string name="Name">ReplicatedStorage</string>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
-		<Item class="ModuleScript" referent="RBXBBF96B58380A4D1F87D6B9D19A9683BD">
+		<Item class="Folder" referent="RBX6D6AA20C531C470EBC3A2CD2B1B0B631">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
-				<Content name="LinkedSource"><null></null></Content>
-				<string name="Name">Domino</string>
-				<string name="ScriptGuid">{A9540D7C-122E-4C7C-9970-F6A321BCD16E}</string>
-				<ProtectedString name="Source"><![CDATA[local Domino = {}
--- Service --
+				<string name="Name">DominoPizzaAPI</string>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX345A7BF59E5A4A5D84AE8D9359C8D69E">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">URL</string>
+					<string name="ScriptGuid">{EBBF8736-22F8-41CE-8BB7-47DB3285CFB7}</string>
+					<ProtectedString name="Source"><![CDATA[local DominoUrl = {}
+
+DominoUrl.URL = {
+    Canada = {
+        StoreLocator = 'http://order.dominos.ca/power/store-locator?type=Locations&c='
+    },
+    UnitedStates = {
+        StoreLocator = ''
+    },
+}
+
+return DominoUrl]]></ProtectedString>
+					<BinaryString name="Tags"></BinaryString>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXA026B7A39E354A70A9D3F8C297CE4F4D">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">StoreLocator</string>
+					<string name="ScriptGuid">{EE40193E-6A71-4CA3-B438-ECBD6520AD5D}</string>
+					<ProtectedString name="Source"><![CDATA[local StoreLocator = {}
+
 local HttpService = game:GetService("HttpService")
--- Script --
-function Domino.StoreSearch(city,province,codepostal) 
+DominoURL = require(game.ReplicatedStorage.DominoPizzaAPI.URL)
+-- to do : use new luau variable type
+function StoreLocator.StoreSearch(city,province,codepostal) -- Get all nearby store info in a array
     -- Error --
     assert(city,'Missing argument : City missing')
     assert(province,'Missing argument : Province missing')
     assert(codepostal,'Missing argument  : Zipcode missing')
-    if status == -104 then
-        error('ERROR : You did not enetered the correct information')
-    end
     -------
-    url = 'http://order.dominos.ca/power/store-locator?type=Locations&c=' .. city .. '%20' .. province .. '%20' .. codepostal
-    return HttpService:JSONDecode((HttpService:GetAsync(url)))
+    local url = DominoURL.URL.Canada.StoreLocator .. city .. '%20' .. province .. '%20' .. codepostal
+    print(url)
+    local Data = HttpService:JSONDecode((HttpService:GetAsync(url)))
+    if Data.status == -104 then error('You did not entered the store information correctly.\n Check if you entred the adress corretcly',2) end
+    return Data
 end
 
-return Domino]]></ProtectedString>
-				<BinaryString name="Tags"></BinaryString>
-			</Properties>
+function StoreLocator.GetStoreId() -- return an array of all the store id's (key : store location, value : store ID) 
+        
+end
+
+return StoreLocator]]></ProtectedString>
+					<BinaryString name="Tags"></BinaryString>
+				</Properties>
+			</Item>
 		</Item>
 	</Item>
 	<Item class="LuaWebService" referent="RBXB0E3AE5F4DAC43508BF309000C40680E">
