@@ -13,8 +13,8 @@ Here's a good tutorial for setting up rojo : https://medium.com/roblox-developme
 
 ## Objective to complete :
 * Get all restaurants near an address
-  * [ ] Figure out the endpoint
-  * [ ] Write a library function
+  * [x] Figure out the endpoint
+  * [x] Write a library function
 * Get info about a specific restaurant
   * [ ] Figure out the endpoint
   * [ ] Write a library function
