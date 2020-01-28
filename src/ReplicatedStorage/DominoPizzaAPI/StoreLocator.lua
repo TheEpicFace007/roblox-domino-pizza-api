@@ -29,6 +29,6 @@ function StoreLocator.GetStoreInfo(City,Province,PostalCode,StoreID)
     if StoreIDSearch == 1 then
         print('Found!' .. '\n' .. StoreIDSearch)
     end
-end]]
+end
 
 return StoreLocator
