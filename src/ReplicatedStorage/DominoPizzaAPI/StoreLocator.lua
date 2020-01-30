@@ -12,7 +12,6 @@ function StoreLocator.StoreSearch(City,Province,PostalCode) -- Get all nearby st
     assert(Province,'Missing argument : Province missing')
     assert(PostalCode,'Missing argument  : PostalCode missing')
     local url = DominoURL.URL.Canada.StoreLocator .. City .. '%20' .. Province .. '%20' .. PostalCode
-    print(url)
     local Data = HttpService:JSONDecode((HttpService:GetAsync(url)))
     if Data.status == -104 then 
         error('You did not entered the store information correctly. Check if you entred the Address corretcly',2) 
@@ -25,10 +24,13 @@ function StoreLocator.GetStoreInfo(City,Province,PostalCode,StoreID)
     assert(Province,'Missing argument : Province missing')
     assert(PostalCode,'Missing argument : PostalCode missing')
     assert(StoreID,'Missing argument : StoreID missing')
-    local  StoreIDSearch = table.find(StoreLocator.StoreSearch(City,Province,PostalCode,StoreID)
-    if StoreIDSearch == 1 then
-        print('Found!' .. '\n' .. StoreIDSearch)
-    end
+    local StoreNearBy = StoreLocator.StoreSearch(City,Province,PostalCode)
+    for i,v in pairs(StoreNearBy.Stores) do
+        if v.StoreID == StoreID then
+            return v
+        end
+        break
+    end        
 end
 
 return StoreLocator
