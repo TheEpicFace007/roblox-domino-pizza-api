@@ -28,7 +28,7 @@ An library for ordering pizza from domino pizza on roblox
   * [ ] Figure out the endpoint
   * [ ] Write a library function
 * Make the API Documentation
-* Build a realtime pizza tracker while we wait for the pizza to arrive
+* Build a realtime pizza tracker
   * [ ] Figure out the endpoint
   * [ ] Write a library function
   * [ ] Build a simple express API that uses the library to get tracking info
