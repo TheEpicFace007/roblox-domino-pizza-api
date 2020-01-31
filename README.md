@@ -9,8 +9,8 @@ An library for ordering pizza from domino pizza on roblox
   * [x] Figure out the endpoint
   * [x] Write a library function
 * Get the menu for a restaurant
-  * [ ] Figure out the endpoint
-  * [ ] Write a library function
+  * [x] Figure out the endpoint
+  * [x] Write a library function
 * Create an order
   * [ ] Figure out the endpoint
   * [ ] Write a library function
